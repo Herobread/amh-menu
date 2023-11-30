@@ -1,5 +1,6 @@
 interface MenuCard {
+	id: number
 	header: string
 	time: string
-	content: MenuSection[]
+	sections: Json
 }

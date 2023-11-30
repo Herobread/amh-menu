@@ -1,42 +1,53 @@
 import Header from '@/components/Header'
 import MenuCard from '@/components/MenuCard/MenuCard'
+import getCurrentMenuWeek from '@/lib/getCurrentMenuWeek'
+import prisma from '@/lib/prisma'
 
-const lunchMenuSections: MenuSection[] = [
-	{
-		header: 'Main',
-		items: [
-			'Flafel burger',
-			'Mediterranean vegetable pasta arrabiata',
-			'Southern fried chicken burger',
-			'Sweet potato and coconut soup',
-		],
-	},
-	{
-		header: 'Side dishes',
-		items: [
-			'Baked/sweet potato',
-			'Salad bar',
-			'Daily baguette',
-			'Fresh fruit',
-			'Yoghurt',
-		],
-	},
-]
+export default async function Home() {
+	const today = new Date()
 
-export default function Home() {
+	// today.setDate(today.getDate() + 1)
+
+	const weekDay = today.toLocaleDateString('en-UK', {
+		weekday: 'long',
+	}) as WeekDay
+	const weekNumber = getCurrentMenuWeek()
+
+	const earliestTime = new Date(today)
+	earliestTime.setHours(0, 0, 0, 0)
+
+	const latestTime = new Date(today)
+	latestTime.setHours(23, 59, 59, 999)
+
+	const data = await prisma.menu.findMany({
+		where: {
+			weekNumber,
+			weekDay,
+		},
+	})
+
 	return (
 		<>
-			<Header header="Monday" subheader="Week 4" />
-			<MenuCard
-				header="Lunch"
-				time="12:00 - 13:30"
-				sections={lunchMenuSections}
-			/>
-			<MenuCard
-				header="Dinner"
-				time="17:30 - 19:00"
-				sections={lunchMenuSections}
-			/>
+			<Header header={weekDay} subheader={`Week ${weekNumber} menu`} />
+			{data.length !== 0 ? (
+				<>
+					{data.map((cardContent) => {
+						return (
+							<MenuCard
+								{...cardContent}
+								key={cardContent.header}
+							/>
+						)
+					})}
+					<i>
+						Please be aware that menus can be subject to change at
+						short notice due to ongoing supply chain and operational
+						issues.
+					</i>
+				</>
+			) : (
+				<p className="text-center">No data for this day</p>
+			)}
 		</>
 	)
 }
