@@ -8,6 +8,8 @@ export const revalidate = 3600
 export default async function Home() {
 	const today = new Date()
 
+	// today.setDate(today.getDate() + 9)
+
 	const weekDay = today.toLocaleDateString('en-UK', {
 		weekday: 'long',
 	}) as WeekDay
@@ -24,6 +26,9 @@ export default async function Home() {
 		where: {
 			weekNumber,
 			weekDay,
+		},
+		orderBy: {
+			time: 'asc',
 		},
 	})
 

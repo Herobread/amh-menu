@@ -1,0 +1,22 @@
+INSERT INTO `Menu` (`header`, `time`, `sections`, `weekDay`, `weekNumber`)
+VALUES (
+    'Dinner',
+    '17:30 - 19:00',
+    '[
+        {"header": "Main", "items": [
+            "Red Thai curry with spinach and chickpeas",
+            "Houmous, sun-dried tomato, and olive pinwheel",
+            "Char siu pork loin",
+            "Chilli con carne"
+        ]},
+        {"header": "Soup", "items": ["Roasted pepper and tomato soup"]},
+        {"header": "Sides", "items": ["Salad bar", "Daily baguette"]},
+        {"header": "Desert", "items": [
+            "Black cherry and apple pie with cream",
+            "Fresh fruit",
+            "Yogurt"
+        ]}
+    ]',
+    'Friday',
+    1
+);
