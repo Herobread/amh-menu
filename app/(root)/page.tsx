@@ -8,7 +8,7 @@ export const revalidate = 3600
 export default async function Home() {
 	const today = new Date()
 
-	// today.setDate(today.getDate() + 9)
+	// today.setDate(today.getDate() - 1)
 
 	const weekDay = today.toLocaleDateString('en-UK', {
 		weekday: 'long',
