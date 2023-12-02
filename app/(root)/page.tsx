@@ -3,7 +3,7 @@ import MenuCard from '@/components/MenuCard/MenuCard'
 import getCurrentMenuWeek from '@/lib/getCurrentMenuWeek'
 import prisma from '@/lib/prisma'
 
-export const revalidate = 3600
+export const revalidate = 60
 
 export default async function Home() {
 	const today = new Date()

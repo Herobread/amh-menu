@@ -1,19 +1,13 @@
 INSERT INTO `Menu` (`header`, `time`, `sections`, `weekDay`, `weekNumber`)
 VALUES (
-    'Lunch',
-    '12:00 - 13:30',
+    'Testing',
+    '19:00 - 19:00',
     '[
-        {"header": "Main", "items": [
-            "Broccoli bhajis",
-            "Cucumber raita",
-            "Tomato, mozzarella and pesto panini",
-            "Pasta carbonara - GF option available"
-        ]},
-        {"header": "Soup", "items": ["Curried cauliflower soup"]},
-        {"header": "Sides", "items": ["Baked/sweet potato", "Salad bar", "Daily baguette"]},
-        {"header": "Dessert", "items": ["Fresh fruit", "Yogurt"]}
+        {"header": "Testing", "items": [
+            "Just testing, nothing to see here"
+        ]}
     ]',
-    'Wednesday',
+    'Saturday',
     1
 );
 
