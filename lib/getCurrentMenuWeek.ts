@@ -6,7 +6,7 @@ export default function getCurrentMenuWeek() {
 
 	const weekNumber = getCurrentWeekInYear()
 
-	let menuWeekNumber = (weekNumber % NUMBER_OF_WEEKS) + OFFSET
+	let menuWeekNumber = (parseInt(weekNumber) % NUMBER_OF_WEEKS) + OFFSET
 
 	if (menuWeekNumber > 4) {
 		menuWeekNumber -= 4
