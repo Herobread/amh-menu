@@ -1,3 +1,5 @@
+import NavBar from '@/components/NavBar'
+
 interface RootLayoutProps {
 	children: React.ReactNode
 }
@@ -5,7 +7,8 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
 	return (
 		<>
-			<div className="max-w-md mx-auto pt-3 grid gap-8 my-8 px-3">
+			<NavBar />
+			<div className="max-w-md mx-auto grid gap-8 my-6 px-3">
 				{children}
 			</div>
 		</>

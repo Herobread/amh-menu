@@ -1,3 +1,5 @@
+import H1 from './typography/H1'
+
 interface HeaderProps {
 	header: string
 	subheader: string
@@ -6,7 +8,7 @@ interface HeaderProps {
 export default function Header({ header, subheader }: HeaderProps) {
 	return (
 		<div className="w-full grid justify-center text-center">
-			<h1 className="text-3xl font-bold">{header}</h1>
+			<H1>{header}</H1>
 			<p>{subheader}</p>
 		</div>
 	)

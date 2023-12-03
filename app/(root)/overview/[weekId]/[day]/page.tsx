@@ -1,26 +1,45 @@
 import Header from '@/components/Header'
+import LinkCard from '@/components/LinkCard'
 import MenuCard from '@/components/MenuCard/MenuCard'
 import getCurrentMenuWeek from '@/lib/getCurrentMenuWeek'
 import prisma from '@/lib/prisma'
 
 export const revalidate = 60
 
-export default async function Home() {
+interface PageProps {
+	params: {
+		weekId: string
+		day: string
+	}
+}
+
+export default async function Page({ params: { weekId, day } }: PageProps) {
 	const today = new Date()
 
 	// today.setDate(today.getDate() - 1)
 
-	const weekDay = today.toLocaleDateString('en-UK', {
-		weekday: 'long',
-	}) as WeekDay
+	let weekDay = day as WeekDay
 
-	const weekNumber = getCurrentMenuWeek()
+	const weekDays = [
+		'Monday',
+		'Tuesday',
+		'Wednesday',
+		'Thursday',
+		'Friday',
+		'Saturday',
+		'Sunday',
+	]
 
-	const earliestTime = new Date(today)
-	earliestTime.setHours(0, 0, 0, 0)
+	if (!weekDays.includes(weekDay)) {
+		return <>Error</>
+	}
 
-	const latestTime = new Date(today)
-	latestTime.setHours(23, 59, 59, 999)
+	let weekNumber = 0
+	try {
+		weekNumber = parseInt(weekId)
+	} catch (error) {
+		return <>Error</>
+	}
 
 	const data = await prisma.menu.findMany({
 		where: {
@@ -34,10 +53,10 @@ export default async function Home() {
 
 	return (
 		<>
-			<Header
-				header={weekDay}
-				subheader={`Today's menu, week ${weekNumber}`}
-			/>
+			<Header header={weekDay} subheader={`Week ${weekNumber} menu`} />
+			<LinkCard flipped href={`/overview/${weekId}`}>
+				Go back
+			</LinkCard>
 			{data.length !== 0 ? (
 				<>
 					{data.map((cardContent) => {

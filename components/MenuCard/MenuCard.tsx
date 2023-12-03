@@ -1,10 +1,13 @@
+import H2 from '../typography/H2'
 import CardSection from './CardSection'
 
 export default function MenuCard({ time, header, sections }: MenuCard) {
 	return (
 		<div className="p-5 grid rounded-xl shadow-lg gap-3">
 			<div className="flex items-baseline">
-				<h2 className="flex-grow text-2xl font-bold">{header}</h2>
+				<div className="flex-grow">
+					<H2>{header}</H2>
+				</div>
 				<p>{time}</p>
 			</div>
 			{sections.map((section: MenuSection) => {
