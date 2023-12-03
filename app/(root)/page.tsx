@@ -1,4 +1,5 @@
 import Header from '@/components/Header'
+import LinkCard from '@/components/LinkCard'
 import MenuCard from '@/components/MenuCard/MenuCard'
 import getCurrentMenuWeek from '@/lib/getCurrentMenuWeek'
 import prisma from '@/lib/prisma'
@@ -14,7 +15,19 @@ export default async function Home() {
 		weekday: 'long',
 	}) as WeekDay
 
+	const tomorrow = new Date()
+
+	tomorrow.setDate(tomorrow.getDate() + 1)
+
+	const nextWeekDay = tomorrow.toLocaleDateString('en-UK', {
+		weekday: 'long',
+	}) as WeekDay
+
 	const weekNumber = getCurrentMenuWeek()
+	let nextWeekNumber = nextWeekDay == 'Monday' ? weekNumber + 1 : weekNumber
+	if (nextWeekNumber > 4) {
+		nextWeekNumber -= 1
+	}
 
 	const earliestTime = new Date(today)
 	earliestTime.setHours(0, 0, 0, 0)
@@ -48,6 +61,11 @@ export default async function Home() {
 							/>
 						)
 					})}
+					<LinkCard
+						href={`/overview/${nextWeekNumber}/${nextWeekDay}`}
+					>
+						Tomorrow menu
+					</LinkCard>
 					<i>
 						Please be aware that menus can be subject to change at
 						short notice due to ongoing supply chain and operational
