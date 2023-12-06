@@ -64,7 +64,7 @@ export default async function Home() {
 					<LinkCard
 						href={`/overview/${nextWeekNumber}/${nextWeekDay}`}
 					>
-						Tomorrow menu
+						Tomorrow&apos;s menu
 					</LinkCard>
 					<i>
 						Please be aware that menus can be subject to change at
