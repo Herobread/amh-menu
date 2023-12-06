@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
 	title: 'AMH menu',
 	description: 'Digital version of Andrew Melville menu',
+	manifest: '/manifest.json',
 }
 
 export default function RootLayout({
