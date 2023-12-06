@@ -1,5 +1,6 @@
 import Footer from '@/components/Footer'
 import NavBar from '@/components/NavBar'
+import Loading from './loading'
 
 interface RootLayoutProps {
 	children: React.ReactNode
