@@ -18,7 +18,7 @@ export default function Footer() {
 				Data source: <i>Paper menu near entrance</i>
 			</p>
 			<p>
-				Version: <i>Beta 0.3</i>
+				Version: <i>Beta 0.6.1</i>
 			</p>
 		</footer>
 	)
