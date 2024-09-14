@@ -1,7 +1,7 @@
 import getCurrentWeekInYear from './getCurrentWeekInYear'
 
 export default function getCurrentMenuWeek() {
-	const OFFSET = 3
+	const OFFSET = 0
 	const NUMBER_OF_WEEKS = 4
 
 	const weekNumber = getCurrentWeekInYear()
